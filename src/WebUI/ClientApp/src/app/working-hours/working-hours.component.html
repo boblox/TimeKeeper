@@ -1,0 +1,47 @@
+<h1 class="mb-5">Working hours</h1>
+
+<p *ngIf="!workingHoursSet"><em>Loading...</em></p>
+
+<div *ngIf="workingHoursSet">
+  <div class="d-flex justify-content-start align-items-center my-2">
+    <div class="preferredWH-block p-3">
+      <span><b>Preferred working hours :</b> {{getShortTime(workingHoursSet.preferredWorkingHoursDuration)}}</span>
+      <button type="button" class="btn btn-primary ml-2" (click)="showEditPreferredWHModal()">Set</button>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center my-2 actions-row">
+    <!--<span class="ml-2">User</span>-->
+    <select class="custom-select d-inline-block select-user" [ngModel]="selectedUser" (ngModelChange)="onUserSelected($event)" *ngIf="isAdmin()">
+      <option [ngValue]="user.userName" *ngFor="let user of users">{{ user.userName }}</option>
+    </select>
+    <input type="text" class="form-control date ml-2" placeholder="Start date" bsDatepicker [bsValue]="selectedDateFrom" (bsValueChange)="onDateFromChange($event)" />
+    <input type="text" class="form-control date ml-2 mr-auto" placeholder="End date" bsDatepicker [bsValue]="selectedDateTo" (bsValueChange)="onDateToChange($event)" [minDate]="selectedDateFrom" />
+    <button type="button" class="btn btn-primary ml-2" (click)="showCreateWHModal()">Add</button>
+    <button type="button" class="btn btn-outline-primary ml-2" (click)="exportRecords()">Export</button>
+  </div>
+
+  <div class="table-responsive">
+    <table class='table working-hours-table' *ngIf="workingHoursList">
+      <thead>
+        <tr>
+          <th class="date">Date</th>
+          <th class="description">Description</th>
+          <th class="duration">Duration</th>
+          <th class="actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let workingHour of workingHoursList" [ngClass]="getTableRowClass(workingHour)">
+          <th>{{ workingHour.date | date:'longDate' }}</th>
+          <td>{{ workingHour.description }}</td>
+          <td>{{ getShortTime(workingHour.duration) }}</td>
+          <td class="text-right">
+            <button type="button" class="btn btn-primary" (click)="showUpdateWHModal(workingHour)">Edit</button>
+            <button type="button" class="btn btn-danger ml-1" (click)="showDeleteWHModal(workingHour)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+  font-size: 30px;
+}
+
+.nav-item {
+  border-radius: 5px;
+  margin: 0 2px;
+
+  &.link-active {
+    background-color: bisque;
+
+    &:hover, &:active {
+      background-color: bisque;
+    }
+  }
+
+  &:hover, &:active {
+    background-color: antiquewhite;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}

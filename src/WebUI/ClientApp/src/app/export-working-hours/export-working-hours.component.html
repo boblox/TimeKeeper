@@ -1,0 +1,25 @@
+<!--<h1 class="mb-5">Users</h1>-->
+<!--<p *ngIf="!users"><em>Loading...</em></p>-->
+
+<table class='table table-bordered mt-5 working-hours-table' aria-labelledby="tableLabel" *ngIf="exportedWH">
+  <thead>
+    <tr>
+      <th class="date">Date</th>
+      <th class="description">Description</th>
+      <th class="duration">Total Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let workingHour of exportedWH">
+      <th>{{ workingHour.date | date:'longDate' }}</th>
+      <td>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let description of workingHour.descriptions">
+            {{ description }}
+          </li>
+        </ul>
+      </td>
+      <td>{{ getShortTime(workingHour.totalDuration) }}</td>
+    </tr>
+  </tbody>
+</table>

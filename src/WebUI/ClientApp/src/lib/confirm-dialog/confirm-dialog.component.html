@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title float-left">{{title}}</h4>
+  <button type="button" class="close float-right" (click)="hide()">
+    <span>&times;</span>
+  </button>
+</div>
+<div class="modal-body text-center">
+  <p>{{ content }}</p>
+</div>
+<div class="modal-footer text-center">
+  <button type="button" class="btn btn-default" (click)="onConfirm()">{{confirmText}}</button>
+  <button type="button" class="btn btn-primary" (click)="onDecline()">{{declineText}}</button>
+</div>

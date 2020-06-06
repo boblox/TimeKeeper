@@ -1,0 +1,48 @@
+<h1 class="mb-5">Users</h1>
+
+<p *ngIf="!users"><em>Loading...</em></p>
+
+<div class="table-responsive">
+  <table class='table table-striped table-bordered' aria-labelledby="tableLabel" *ngIf="users">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Role</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row" class="align-middle">{{ user.userName }}</th>
+        <td class="align-middle">{{ user.role }}</td>
+        <td class="text-right">
+          <button type="button" class="btn btn-primary" (click)="showEditRoleModal(user, editRoleModal)" *ngIf="canSetRoleFor(user)">Set Role</button>
+          <button type="button" class="btn btn-danger ml-1" (click)="showDeleteUserModal(user)" *ngIf="canDelete(user)">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #editRoleModal>
+  <div class="modal-header">
+    <h4 class="modal-title float-left">Set Role</h4>
+    <button type="button" class="close float-right" (click)="editRoleModalRef.hide()">
+      <span>&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="roleListTitle">Role</label>
+      <select class="form-control" [(ngModel)]="editRoleEditor.role">
+        <option [ngValue]="role" *ngFor="let role of editRoleEditor.availableRoles">{{ role }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="text-right">
+      <button class="btn btn-default" (click)="editRoleModalRef.hide()">Cancel</button>
+      <button class="btn btn-primary" (click)="editRole()">Update</button>
+    </div>
+  </div>
+</ng-template>

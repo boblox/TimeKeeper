@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+.working-hours-table {
+  .date {
+    min-width: 170px;
+  }
+
+  .description {
+    /*min-width: 170px;*/
+  }
+
+  .duration {
+    min-width: 110px;
+  }
+}

@@ -1,0 +1,36 @@
+:host {
+  display: block;
+}
+
+.working-hours-table {
+  .date {
+    min-width: 170px;
+  }
+
+  .description {
+    /*min-width: 170px;*/
+  }
+
+  .duration {
+    min-width: 110px;
+  }
+
+  .actions {
+    min-width: 170px;
+  }
+}
+
+.preferredWH-block {
+  background-color: antiquewhite;
+  border-radius: 2px;
+}
+
+.actions-row {
+  .date {
+    max-width: 150px;
+  }
+
+  .select-user {
+    max-width: 200px;
+  }
+}

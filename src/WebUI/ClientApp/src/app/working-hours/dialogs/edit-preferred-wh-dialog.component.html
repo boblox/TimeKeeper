@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title float-left">{{title}}</h4>
+  <button type="button" class="close float-right" (click)="onDecline()">
+    <span>&times;</span>
+  </button>
+</div>
+<div class="modal-body text-center">
+  <timepicker [(ngModel)]="duration" [showMeridian]="false"></timepicker>
+</div>
+<div class="modal-footer text-center">
+  <button type="button" class="btn btn-primary" (click)="onConfirm()">{{confirmText}}</button>
+  <button type="button" class="btn btn-default" (click)="onDecline()">{{declineText}}</button>
+</div>

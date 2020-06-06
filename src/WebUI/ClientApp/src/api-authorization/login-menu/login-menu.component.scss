@@ -1,0 +1,16 @@
+.nav-item {
+  border-radius: 5px;
+
+  &.link-active {
+    background-color: bisque;
+    margin: 0 2px;
+
+    &:hover, &:active {
+      background-color: bisque;
+    }
+  }
+
+  &:hover, &:active {
+    background-color: antiquewhite;
+  }
+}
